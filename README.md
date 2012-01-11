@@ -1,7 +1,7 @@
 # resourceful-couchelastic
 
 The goal of CouchElastic is to provide seamless full-text and parametric search to Node.js apps, 
-accomplished via [Flatiron][3]'s [Resourceful][4] ODM layer and the awesome power of CouchDB and [Elasticsearch][4]. 
+accomplished via [Flatiron][2]'s [Resourceful][3] ODM layer and the awesome power of CouchDB and [Elasticsearch][4]. 
 
 
 ## Configuration
