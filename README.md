@@ -1,6 +1,7 @@
 # resourceful-couchelastic
 
-A hybrid storage engine for the [Resourceful](https://github.com/flatiron/resourceful/) ODM.
+The goal of CouchElastic is to provide seamless full-text and parametric search to Node.js apps, 
+accomplished via [Flatiron][3]'s [Resourceful][4] ODM layer and the awesome power of CouchDB and [Elasticsearch][4]. 
 
 
 ## Configuration
@@ -76,3 +77,9 @@ All tests are written with [vows][0] and should be run with [npm][1]:
 #### Author: Richard Marr
 #### License: Apache 2.0
 
+
+[0]: http://vowsjs.org
+[1]: http://npmjs.org
+[2]: http://flatironjs.org/
+[3]: https://github.com/flatiron/resourceful/
+[4]: http://www.elasticsearch.org
