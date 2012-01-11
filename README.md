@@ -43,31 +43,34 @@ TODO - maybe just pass through mapping options transparently for flexibility
 Assuming you've defined a Creature as per the Resourceful docs you should be able to search your database in free text like this.
 
 ``` js
-  Creature.search("fur",function(err,creatures){
-    // creatures is an array of Creature objects that match the search
-  });
+	Creature.search("fur",function(err,creatures){
+		// creatures is an array of Creature objects that match the search
+	});
 ```
 
-You can also search using Elasticsearch's query DSL
+You can also search using the Elasticsearch query DSL
+
 ``` js
-  Creature.search({
-    term:{
-      legs:4,
-      eats:"wasps"
-    }
-  },function(err,creatures){
-    // creatures is an array of Creature objects that match the search
-  });
+	Creature.search({
+		term:{
+			legs:4,
+			eats:"wasps"
+		}
+	},function(err,creatures){
+		// creatures is an array of Creature objects that match the search
+	});
 ```
 
 TODO - clean up the object search API and allow faceting etc.
 
 ## Installation
 
-`npm install resourceful-couchelastic`
-
+``` bash
+	npm install resourceful-couchelastic`
+```
 
 ## Tests
+
 All tests are written with [vows][0] and should be run with [npm][1]:
 
 ``` bash
