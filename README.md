@@ -9,9 +9,8 @@ accomplished via [Flatiron][3]'s [Resourceful][4] ODM layer and the awesome powe
 Start up an empty instance of CouchDB and an empty instance of Elasticsearch, then do this:
 
 ``` js
-	var assert = require('assert'),
-		resourceful = require('resourceful'),
-		Couchelastic = require('../index');
+	var resourceful = require('resourceful'),
+		Couchelastic = require('resourceful-couchelastic').Couchelastic;
 
 	resourceful.use('couchelastic',{
 		database:'couchelastic-sync-test'
