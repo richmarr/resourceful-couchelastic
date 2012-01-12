@@ -16,7 +16,7 @@
   },
   "dependencies":{
     "cradle": "0.5.x",
-    "elastical": "0.0.3",
+    "elastical": "0.0.7",
     "resourceful-elasticsearch":"0.0.3",
     "resourceful":"0.1.5"
   },
