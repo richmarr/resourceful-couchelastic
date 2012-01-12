@@ -11,8 +11,8 @@ Start up an empty instance of CouchDB and an empty instance of Elasticsearch, th
 ``` js
 	var resourceful = require('resourceful'),
 		Couchelastic = require('resourceful-couchelastic').Couchelastic;
-
-	resourceful.use('couchelastic',{
+	
+	resourceful.use( Couchelastic, {
 		database:'couchelastic-sync-test'
 	});
 ```
