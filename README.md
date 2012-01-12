@@ -13,7 +13,12 @@ Start up an empty instance of CouchDB and an empty instance of Elasticsearch, th
 		Couchelastic = require('resourceful-couchelastic').Couchelastic;
 	
 	resourceful.use( Couchelastic, {
-		database:'couchelastic-sync-test'
+		host : 'localhost', // optional - defaults to localhost
+		port : 5984, // optional - defaults to 5984
+		database:'db-name', // required
+		search:{
+			index:'my-index-name' // optional - defaults to db name
+		}
 	});
 ```
 
