@@ -3,10 +3,13 @@ var assert = require('assert'),
     elastical = require('elastical'),
     vows = require('vows'),
     resourceful = require('resourceful'),
-    Couchelastic = require('../index');
+    Couchelastic = require('../index').Couchelastic;
 
 resourceful.env = 'test';
-resourceful.use('couchelastic',{
+
+resourceful.engines.Couchelastic = Couchelastic;
+
+resourceful.use( 'couchelastic', {
 	database:'couchelastic-sync-test'
 });
 
