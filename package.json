@@ -17,7 +17,7 @@
   "dependencies":{
     "cradle": "0.5.x",
     "elastical": "0.0.7",
-    "resourceful-elasticsearch":"0.0.5",
+    "resourceful-elasticsearch":"0.0.6",
     "resourceful":"0.1.6"
   },
   "devDependencies": {
