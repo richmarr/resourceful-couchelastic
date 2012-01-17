@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "vows --spec -i"
+    "test": "vows test/offline-* --spec -i"
   },
   "engines": {
     "node": "~0.4.7"
