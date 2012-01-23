@@ -28,7 +28,7 @@ vows.describe('resourceful/couchelastic/sync').addBatch({
 							this.number('legs');
 							this.bool('tail');
 							this.array('eaten',{arraytype:'string'});
-							this.array('secrets',{ search:{ enabled:false });
+							this.array('secrets',{ search:{ enabled:false }});
 						});
 						var wolf = new Creature({
 							legs:4,
