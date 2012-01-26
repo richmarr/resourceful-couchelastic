@@ -12,12 +12,15 @@ Start up an empty instance of CouchDB and an empty instance of Elasticsearch, th
 	var resourceful = require('resourceful'),
 		Couchelastic = require('resourceful-couchelastic').Couchelastic;
 	
-	resourceful.use( Couchelastic, {
+	resourceful.engines.Couchelastic = Couchelastic;  // patch in the engine
+	resourceful.use( 'couchelastic', {
+		// CouchDB settings
 		host : 'localhost', // optional - defaults to localhost
-		port : 5984, // optional - defaults to 5984
+		port : 5984,        // optional - defaults to 5984
 		database:'db-name', // required
 		search:{
-			index:'my-index-name' // optional - defaults to db name
+			// Elasticsearch settings
+			index:'my-index-name'  // optional - defaults to db name
 		}
 	});
 ```
@@ -27,7 +30,66 @@ CouchDB cluster and have an Elasticsearch indexing river configured to index the
 
 ## Define a resource
 
-Assuming you're already defining resources with Resourceful nothing more is required, but there are some additional optional you might want to use.
+Assuming you're already defining resources with Resourceful nothing more is required, but there are some additional optional you might want to use. 
+Everything specified within the options.search is passed straight into ES's Mapping API, allowing you fine-grained control over how that individual 
+field is treated in the index.
+
+``` js
+	var Creature = resourceful.define('Creature', function(){
+		this.string('name',{ required:true });
+		this.string('genus');
+		this.number('population');
+		this.number('legs',{
+			required: true,        // validation rules
+			minimum: 0,
+			search:{               
+				type:'integer'       // this tells ES what type of number this is
+			}
+		});
+		this.array('eats',{
+			search:{ type:'string' }
+		});
+		this.string('geography',{
+			search:{
+				analyzer:'snowball'  // stem words to match word stem rather than exact form.
+			}
+		});
+	});
+```
+
+## Searching
+
+Assuming you've defined a Creature as per the Resourceful docs you should be able to search your database in free text like this.
+
+``` js
+	Creature.search("fur",function( err, creatures, response ){
+		// creatures is a convenient array of Creature objects that match the search
+		// response contains the entire ES response including search results and metadata
+	});
+```
+
+You can also search using the Elasticsearch query DSL, for example the following `fuzzy` query would also match the word "oscar"
+
+``` js
+	Actor.search({
+		query : {
+    		fuzzy : { text : "socar" }	
+		}
+	},function( err, actors, response ){
+		
+	});
+```
+
+Or using Resoureceful's parametric query method `Resourece.find()`
+
+``` js
+	Creature.find({
+		legs:4,
+		eats:"wasps"
+	},function( err, creatures, response ){
+		
+	});
+```
 
 ### Security
 
@@ -36,34 +98,11 @@ If some of your Resource data is sensitive you might want to block it from being
 ``` js
 	var Employee = resourceful.define('Employee', function(){
 		this.string('name');
-		this.number('salary',{searchable:false});
+		this.number('salary',{search:{index:'no'}});
 	});
 ```
 
-TODO - maybe just pass through mapping options transparently for flexibility
 
-## Searching
-
-Assuming you've defined a Creature as per the Resourceful docs you should be able to search your database in free text like this.
-
-``` js
-	Creature.search("fur",function(err,creatures){
-		// creatures is an array of Creature objects that match the search
-	});
-```
-
-You can also search using the Elasticsearch query DSL
-
-``` js
-	Creature.search({
-		term:{
-			legs:4,
-			eats:"wasps"
-		}
-	},function(err,creatures){
-		// creatures is an array of Creature objects that match the search
-	});
-```
 
 TODO - clean up the object search API and allow faceting etc.
 
