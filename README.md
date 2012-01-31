@@ -76,7 +76,8 @@ You can also search using the Elasticsearch query DSL, for example the following
     		fuzzy : { text : "socar" }	
 		}
 	},function( err, actors, response ){
-		
+		// actors is an array
+		// response is the full response containing metadata, e.g. facets
 	});
 ```
 
@@ -87,7 +88,20 @@ Or using Resoureceful's parametric query method `Resourece.find()`
 		legs:4,
 		eats:"wasps"
 	},function( err, creatures, response ){
-		
+		// 
+	});
+```
+### Joining
+
+If you have two data types related by a one-to-many foreign key you can do this (many-many not available yet): 
+
+``` js
+	Creature.search("name:wolf",function( err, creatures ){
+		Genus.join( creatures, function( err, creatures ){
+			// creatures now contains:
+			//     creature.genus_id - foreign key
+			//     creature.genus - linked entity
+		});
 	});
 ```
 
