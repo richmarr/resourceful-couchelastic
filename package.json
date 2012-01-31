@@ -1,26 +1,33 @@
 {
-  "author": "Richard Marr <richard.marr@gmail.com>",
-  "name": "resourceful-couchelastic",
-  "description": "Hybrid Couchdb/Elasticsearch engine for Resourceful",
-  "version": "0.0.6",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/richmarr/resourceful-couchelastic.git"
-  },
-  "main": "index.js",
-  "scripts": {
-    "test": "vows test/offline-* --spec -i"
-  },
-  "engines": {
-    "node": "~0.4.7"
-  },
-  "dependencies":{
-    "cradle": "0.5.x",
-    "elastical": "0.0.7",
-    "resourceful-elasticsearch":"0.0.9",
-    "resourceful":"0.1.6"
-  },
-  "devDependencies": {
-    "vows": "~0.6.0"
-  }
+	"author": "Richard Marr <richard.marr@gmail.com>",
+	"name": "resourceful-couchelastic",
+	"description": "Hybrid Couchdb/Elasticsearch engine for Resourceful",
+	"version": "0.0.6",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/richmarr/resourceful-couchelastic.git"
+	},
+	"main": "index.js",
+	"scripts": {
+		"test": "vows test/offline-* --spec -i"
+	},
+	"engines": {
+		"node": "~0.4.7"
+	},
+	"dependencies":{
+		"resourceful-elasticsearch":"0.0.10",
+		"resourceful":"0.1.6"
+	},
+	"devDependencies": {
+		"cradle": "0.5.x",
+		"vows": "~0.6.0",
+		"elastical": "0.0.7"
+	}
 }
+/*
+	TO DO
+	- blog widget
+	- import tool
+	- image upload
+	- 
+*/
