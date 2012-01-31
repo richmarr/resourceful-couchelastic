@@ -2,7 +2,7 @@
 	"author": "Richard Marr <richard.marr@gmail.com>",
 	"name": "resourceful-couchelastic",
 	"description": "Hybrid Couchdb/Elasticsearch engine for Resourceful",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/richmarr/resourceful-couchelastic.git"
@@ -15,7 +15,7 @@
 		"node": "~0.4.7"
 	},
 	"dependencies":{
-		"resourceful-elasticsearch":"0.0.10",
+		"resourceful-elasticsearch":"0.0.11",
 		"resourceful":"0.1.6"
 	},
 	"devDependencies": {
