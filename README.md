@@ -30,7 +30,7 @@ CouchDB cluster and have an Elasticsearch indexing river configured to index the
 
 ## Define a resource
 
-Assuming you're already defining resources with Resourceful nothing more is required, but there are some additional optional you might want to use. 
+Assuming you're already defining resources with Resourceful nothing more is required, but there are some additional options you might want to use. 
 Everything specified within the options.search is passed straight into ES's Mapping API, allowing you fine-grained control over how that individual 
 field is treated in the index.
 
