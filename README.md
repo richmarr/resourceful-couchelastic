@@ -57,6 +57,14 @@ field is treated in the index.
 	});
 ```
 
+## Synchronise your schema
+
+The `sync()` method saves appropriate CouchDB design documents, Elasticsearch Mapping docs, and sets up an Elasticsearch River from CouchDB for each Resource type.
+
+You can `save()` and `get()` documents to and from CouchDB without syncing, but in order to use `search()` you need to `sync()`
+
+
+
 ## Searching
 
 Assuming you've defined a Creature as per the Resourceful docs you should be able to search your database in free text like this.
