@@ -59,11 +59,15 @@ field is treated in the index.
 
 ## Synchronise your schema
 
-The `sync()` method saves appropriate CouchDB design documents, Elasticsearch Mapping docs, and sets up an Elasticsearch River from CouchDB for each Resource type.
+The `sync()` method sets up your data sources for you. Until you sync you can `save()` and `get()` but not much more. 
 
-You can `save()` and `get()` documents to and from CouchDB without syncing, but in order to use `search()` you need to `sync()`
+For each `Resource` type `sync` does the following:
 
+ * Saves a CouchDB design document 
+ * Saves an Elasticsearch Mapping document
+ * Creates a River on the Elasticsearch cluster that listens to CouchDB's replication stream
 
+You'll need to `sync` after you make any significant design changes so that they're carried through to the schemas of both servers. Be aware that changing the data type of a field after data has already been indexed can be problematic.
 
 ## Searching
 
