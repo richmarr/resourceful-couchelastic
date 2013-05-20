@@ -1,6 +1,5 @@
 var assert = require('assert'),
 	cradle = require('cradle'),
-	elastical = require('elastical'),
 	vows = require('vows'),
 	resourceful = require('resourceful'),
 	Couchelastic = require('../index').Couchelastic;
@@ -13,6 +12,8 @@ resourceful.use( 'couchelastic', {
 	database:'couchelastic-sync-test'
 });
 
+var client = resourceful.engine.client;
+
 var Creature; // Set this in module scope so we can refer to it a few times
 
 vows.describe('resourceful/couchelastic/sync').addBatch({
@@ -20,7 +21,6 @@ vows.describe('resourceful/couchelastic/sync').addBatch({
 		topic: function () {
 			var that = this;
 			var db = new(cradle.Connection)().database('couchelastic-sync-test');
-			var client = new(elastical.Client)('127.0.0.1', {port:9200});
 			client.deleteIndex('couchelastic-sync-test', function () {
 				db.destroy(function(){
 					db.create(function(){
