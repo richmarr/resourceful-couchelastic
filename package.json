@@ -15,7 +15,7 @@
 		"node": "~0.4.7"
 	},
 	"dependencies":{
-		"resourceful-elasticsearch":"0.1.4",
+		"resourceful-elasticsearch":"0.1.5",
 		"resourceful":"0.1.6"
 	},
 	"devDependencies": {
